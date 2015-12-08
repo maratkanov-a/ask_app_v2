@@ -28,10 +28,11 @@
   </div>
 </div>
     <hr>
-{% for ans in question.answer_set.all %}
+{# TODO: PAGINATION#}
+{% for ans in question.answer_set.all|slice:":5" %}
     <div class="panel row">
             <div class="large-2 columns">
-                123
+                avatar
             </div>
             <div class="large-4 columns end">
                 <a href="#panel{{ ans.id }}a">{{ ans.body }}</a>

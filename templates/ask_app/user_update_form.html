@@ -7,40 +7,41 @@
 
 <form action="" method="post">
     {% csrf_token %}
-    <fieldset>
-        <legend>Change Profile</legend>
-
-        <label>
-            <span data-tooltip aria-haspopup="true" class="has-tip tip-right noradius" title="Required field">
-                Username
-            </span>
-          {{ form.username }}
-        </label>
-        <label>Email
-          {{ form.email }}
-        </label>
-        <label>
-            <span data-tooltip aria-haspopup="true" class="has-tip tip-right noradius" title="Required field">
-                Password
-            </span>
-          {{ form.password1 }}
-        </label>
-        <label>
-            <span data-tooltip aria-haspopup="true" class="has-tip tip-right noradius" title="Required field">
-                Password confirmation
-            </span>
-          {{ form.password2 }}
-        </label>
-        <label>
-            <span data-tooltip aria-haspopup="true" class="has-tip tip-right noradius" title="Download your picture">
-                Avatar
-            </span>
-          {{ form.avatar }}
-        </label>
-
-        <input class="button" type="submit" value="Create" />
-
-      </fieldset>
+{#    <fieldset>#}
+{#        <legend>Change Profile</legend>#}
+{##}
+{#        <label>#}
+{#            <span data-tooltip aria-haspopup="true" class="has-tip tip-right noradius" title="Required field">#}
+{#                Username#}
+{#            </span>#}
+{#          {{ form.username }}#}
+{#        </label>#}
+{#        <label>Email#}
+{#          {{ form.email }}#}
+{#        </label>#}
+{#        <label>#}
+{#            <span data-tooltip aria-haspopup="true" class="has-tip tip-right noradius" title="Required field">#}
+{#                Password#}
+{#            </span>#}
+{#          {{ form.password1 }}#}
+{#        </label>#}
+{#        <label>#}
+{#            <span data-tooltip aria-haspopup="true" class="has-tip tip-right noradius" title="Required field">#}
+{#                Password confirmation#}
+{#            </span>#}
+{#          {{ form.password2 }}#}
+{#        </label>#}
+{#        <label>#}
+{#            <span data-tooltip aria-haspopup="true" class="has-tip tip-right noradius" title="Download your picture">#}
+{#                Avatar#}
+{#            </span>#}
+{#          {{ form.avatar }}#}
+{#        </label>#}
+{##}
+{#        <input class="button" type="submit" value="Change" />#}
+{##}
+{#      </fieldset>#}
+{{ form.as_p }}
 </form>
 
 {% endblock %}

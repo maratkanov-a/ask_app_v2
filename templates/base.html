@@ -25,6 +25,7 @@
       <section class="top-bar-section">
         <!-- Right Nav Section -->
         <ul class="right">
+            <li class="active"><a href="{% url 'hot-page' %}">HOT</a></li>
             {% if user.is_authenticated %}
               <li class="active"><a href="{% url 'question-create-page' %}">ASK</a></li>
                 {% if user.avatar %}
