@@ -14,7 +14,6 @@ class CreateUserForm(UserCreationForm):
 
 class ChangeUserForm(forms.ModelForm):
     avatar = forms.ImageField(required=False, widget=ClearableFileInput)
-    password = ReadOnlyPasswordHashField()
 
     class Meta:
         model = User

@@ -25,13 +25,25 @@ class AskAppTemplateView(TemplateView):
 
 # show all questions
 class QuestionListView(ListView):
-    model = Question
     # use CustomManeger
     queryset = Question.my.newest()
     paginate_by = 5
 
     def get_context_data(self, **kwargs):
         data = super(QuestionListView, self).get_context_data(**kwargs)
+        data['best_users'] = User.objects.all()[:5]
+        data['tags'] = Tags.objects.all()[:3]
+        return data
+
+# inclusion tags
+# show hot answers
+class QuestionListViewHot(ListView):
+    # use CustomManeger
+    queryset = Question.my.hot()
+    paginate_by = 5
+
+    def get_context_data(self, **kwargs):
+        data = super(QuestionListViewHot, self).get_context_data(**kwargs)
         data['best_users'] = User.objects.all()[:5]
         data['tags'] = Tags.objects.all()[:3]
         return data

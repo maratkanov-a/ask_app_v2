@@ -8,6 +8,5 @@ class QuestionManager(models.Manager):
     def newest(self):
         return self.order_by('-date')
 
-    # TODO: add sort by tag
-    # def findByTag(self):
-    #     return self.filter()
+    def findByTag(self, tag_to_find):
+        return self.filter(tags=tag_to_find)
