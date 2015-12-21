@@ -35,6 +35,12 @@ urlpatterns = [
     url(r'^user/create/$', UserCreateView.as_view(), name='user-create-page'),
     url(r'^user/(?P<pk>\d+)/delete/$', UserDeleteView.as_view(), name='user-delete-page'),
 
+    # ajax rating
+    # TODO: fix views
+    url(r'^question/(?P<pk>\d+)/change/rating/$', QuestionUpdateRating.as_view(), name='question-rating-request'),
+    url(r'^answer/(?P<pk>\d+)/change/flag/$', AnswerChangeFlag.as_view(), name='answer-flag-request'),
+    url(r'^answer/change/rating/$', AnswerChangeRating.as_view(), name='answer-rating-request'),
+
     url(r'^admin/', include(admin.site.urls)),
 
 ]

@@ -5,7 +5,7 @@
     <small class="error">Your passwords didn't match</small>
 {% endif %}
 
-<form action="" method="post">
+<form action="" method="post" enctype="multipart/form-data">
     {% csrf_token %}
 {#    <fieldset>#}
 {#        <legend>Change Profile</legend>#}
@@ -42,6 +42,7 @@
 {##}
 {#      </fieldset>#}
 {{ form.as_p }}
+<input class="button" type="submit" value="Change" />
 </form>
 
 {% endblock %}

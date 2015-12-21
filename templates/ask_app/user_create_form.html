@@ -5,7 +5,7 @@
     <small class="error">Your passwords didn't match</small>
 {% endif %}
 
-<form action="" method="post">
+<form action="" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <fieldset>
         <legend>Registration</legend>
