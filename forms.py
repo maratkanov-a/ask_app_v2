@@ -17,7 +17,7 @@ class ChangeUserForm(forms.ModelForm):
 
     class Meta:
         model = User
-        exclude = ['rating']
+        fields = ['username', 'email']
 
 
 class CreateQuestionForm(forms.ModelForm):
@@ -30,3 +30,22 @@ class CreateAnswerForm(forms.ModelForm):
     class Meta:
         model = Answer
         fields = ['body']
+
+
+# for ajax
+class QuestionUpdateRatingForm(forms.ModelForm):
+    class Meta:
+        model = Question
+        fields = ['rating']
+
+
+class ChangeAnswerRatingForm(forms.ModelForm):
+    class Meta:
+        model = Answer
+        fields = ['rating']
+
+
+class ChangeAnswerFlagForm(forms.ModelForm):
+    class Meta:
+        model = Answer
+        fields = ['flag']

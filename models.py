@@ -1,12 +1,13 @@
 import datetime
 from django.contrib.auth.models import UserManager, AbstractUser
 from django.db import models
+from ask_project.settings import MEDIA_ROOT
 from managers import *
 
 
 class User(AbstractUser):
     rating = models.IntegerField(default=0)
-    avatar = models.ImageField(blank=True, null=True)
+    avatar = models.ImageField(upload_to=MEDIA_ROOT, blank=True, null=True)
 
     object = UserManager()
 

@@ -126,6 +126,21 @@ class QuestionUpdateView(UpdateView):
 class QuestionDeleteView(DeleteView):
     model = Question
 
+
+#  ------------------------------------- new shit
+class QuestionUpdateRating(UpdateView):
+    model = Question
+    form_class = QuestionUpdateRatingForm
+    template_name_suffix = '_ajax_update_form'
+    success_url = reverse_lazy('home-page')
+
+    def form_valid(self, form):
+        question = self.get_queryset().get(id=self.object.id)
+        form.instance.rating = question.rating + int(self.request.POST['rating'])
+        form.save()
+        return super(QuestionUpdateRating, self).form_valid(form)
+# ------------------------------------------------
+
 # classes for working with Answers models
 
 
@@ -149,6 +164,34 @@ class AnswerUpdateView(UpdateView):
 class AnswerDeleteView(DeleteView):
     model = Answer
     success_url = reverse_lazy('home-page')
+
+
+# ------------------------------------------ new shit
+# ajax update rating
+class AnswerChangeRating(UpdateView):
+    model = Answer
+    form_class = ChangeAnswerRatingForm
+    template_name_suffix = '_ajax_update_form'
+    success_url = reverse_lazy('home-page')
+
+    def form_valid(self, form):
+        answer = self.get_queryset().get(id=self.object.id)
+        answer.rating += int(self.request.POST['rating'])
+        answer.save()
+        return super(AnswerChangeRating, self).form_valid(form)
+
+
+# ajax update flag
+class AnswerChangeFlag(UpdateView):
+    model = Answer
+    form_class = ChangeAnswerFlagForm
+    template_name_suffix = '_ajax_update_form'
+    success_url = reverse_lazy('home-page')
+
+    def form_valid(self, form):
+        form.save()
+        return super(AnswerChangeFlag, self).form_valid(form)
+# -------------------------------------------------------
 
 # classes for working with Users models
 
@@ -191,6 +234,7 @@ class UserUpdateView(UpdateView):
     model = User
     form_class = ChangeUserForm
     template_name_suffix = '_update_form'
+    success_url = reverse_lazy('home-page')
 
 
 # delete one user
