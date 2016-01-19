@@ -31,13 +31,24 @@
 {# TODO: PAGINATION#}
 {% for ans in question.answer_set.all|slice:":5" %}
     <div class="panel row" id="update">
-        <div class="js-insert large-2 columns">
-            {% if ans.flag %}
-                <i class="js-press-flag fa fa-star fa-5x" data-flag="False" data-answer-id="{{ ans.id }}"></i>
-            {% else %}
-                <i class="js-press-flag fa fa-star-o fa-5x" data-flag="True" data-answer-id="{{ ans.id }}"></i>
-            {% endif %}
-        </div>
+        {% if user.username == question.author %}
+            <div class="js-insert large-2 columns">
+                {% if ans.flag %}
+                    <i class="js-press-flag fa fa-star fa-5x" data-flag="False" data-answer-id="{{ ans.id }}"></i>
+                {% else %}
+                    <i class="js-press-flag fa fa-star-o fa-5x" data-flag="True" data-answer-id="{{ ans.id }}"></i>
+                {% endif %}
+            </div>
+        {% else %}
+            <div class="js-insert large-2 columns">
+                {% if ans.flag %}
+                    <i class="js-press-flag fa fa-star fa-5x" data-flag="False" data-answer-id="{{ ans.id }}"></i>
+                {% else %}
+                    <i class="js-press-flag fa fa-star-o fa-5x" data-flag="True" data-answer-id="{{ ans.id }}"></i>
+                {% endif %}
+            </div>
+        {% endif %}
+
         <div class="large-4 columns end">
             <a href="#panel{{ ans.id }}a">{{ ans.body }}</a>
             <div id="panel{{ ans.id }}a" class="content">
